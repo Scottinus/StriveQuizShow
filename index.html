@@ -1,0 +1,577 @@
+<html>
+    <head>
+
+<title>StriveQuizShow</title>
+<link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet"> 
+<style>
+
+    body{
+      background-color :rgb(90, 90, 90);
+
+    }
+ .mainContainer{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(10px, auto);
+ }
+
+ #Difficulty{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(10px, auto);
+    border: 5px dotted black;
+    background-color: rgba(82, 82, 82, 0.452);
+ }
+
+ #volumeButton{
+     width: 50px;
+     height: 50px;
+     margin-left: 20em;
+     margin-top: 5em;
+     background-color: #78e792;
+     border: 3px solid black;
+ }
+
+ .logoDifficulty{
+     margin-top: 3em;
+     margin-left: 7.5em;
+     margin-bottom: 3em;
+     border: 5px solid black;
+
+ }
+
+ #Quiz{
+     margin-top: 2em;
+     margin-left: 20em;
+     margin-right: 20em;
+     border: 3px solid black;
+     background-color : #eee;
+     border-radius : 10px;
+ }
+
+ h2, h1{
+     text-align: center;
+     font-family: 'Teko', sans-serif;
+     background-color: #78e792;
+     border: 2px solid black;
+     border-radius: 20px;
+     margin-left: 8em;
+     margin-right: 8em;
+ }
+
+ h3{
+     text-align: center;
+     font-family: 'Teko', sans-serif;
+     font-size: 80px;
+ }
+
+ h4{
+     font-size: 2em;
+     font-family: 'Teko', sans-serif;
+ }
+
+ #resultText{
+     text-align: center;
+ }
+
+ .answer{
+     margin-top: 2em;
+     margin-left: 10em;
+     font-size: 20px;
+ }
+
+ #submitButton{
+     position: relative;
+     margin-top: 3em;
+     margin-bottom: 1em;
+     left:12.5em;
+     font-size: 30px;
+     background-color:black;
+     color: white;
+     border:2px solid white;
+ }
+
+
+
+</style>
+    </head>
+
+
+    <body>
+            <audio loop id="audio" src="[Persona 5]The Whims of Fate.mp3" autoplay ><!--Autoplay da inserire-->
+                <p>If you are reading this, it is because your browser does not support the audio element.     </p>
+                <embed src="[Persona 5]The Whims of Fate.mp3" width="180" height="90" loop="true" autostart="true" hidden="true" />
+                </audio>
+       <div class ="mainContainer">
+           <div></div>
+        <div><img src = "strivelogoquiz.png" alt = "logo quizshow" width = "500px"></div>
+        <div><input type ="button" value="Off" onclick ="turnVolume(this)" id ="volumeButton"></div>
+       </div>
+
+       <h1  id = "title" style = "display : ">SELECT YOUR MODE!</h1>
+<div id ="Difficulty">
+<div>
+    <img onmouseenter="onMouseAudio()" class = "logoDifficulty" src ="easy.png" alt ="easyMode" width= "250px" value ="Easy" onclick="choiceMode(this)">
+</div>
+<div>
+    <img onmouseenter="onMouseAudio()" class = "logoDifficulty" src ="normal.png" alt ="normalMode" width= "250px" value="Normal" onclick="choiceMode(this)"></div>
+<div><img onmouseenter="onMouseAudio()" class = "logoDifficulty" src ="hard.png" alt ="hardMode" width= "250px" value ="Hard" onclick="choiceMode(this)"></div>
+</div>
+
+<div id ="Quiz" style = "display : none">
+    <!--EASY MODE-->
+            <div id ="EasyMode" style = "display : none ">
+
+                    <!--FIRST QUESTION-->
+                    <div id = "firstQuestion"  style = "display :">
+                    <h2> who is the guy with big moustaches and red hat in the Nintendo games?:</h2>
+                             <div class = "answer" id ="first">
+                      <input type="radio" name="Answer" value="right" onclick ="checkAnswer(this)"> Super Mario<br>
+                      <input type="radio" name="Answer" value="wrong" onclick ="checkAnswer(this)"> Super Wario<br>
+                      <input type="radio" name="Answer" value="wrong" onclick ="checkAnswer(this)"> Super Scottino<br>  
+                               <h4></h4>
+                             </div>
+                             <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                    </div>
+                <!--SECOND QUESTION-->
+                    <div id = "secondQuestion" style = "display : none">
+                            <h2>which of these game has a violet dragon as protagonist? :</h2>
+                            <div class = "answer" id ="second">
+                              <input type="radio" name="Answer2" value="wrong" onclick ="checkAnswer(this)"> Dragon Age<br>
+                              <input type="radio" name="Answer2" value="right" onclick ="checkAnswer(this)"> Spyro<br>
+                              <input type="radio" name="Answer2" value="wrong" onclick ="checkAnswer(this)"> Dragon's Dogma<br>
+                              <h4></h4>
+                            </div>  
+                              <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                    </div>
+                     <!--THIRD QUESTION-->
+                    <div id = "thirdQuestion" style = "display : none" >
+                            <h2>In what Game Series are Golden Rings used as Life-energy and Money</h2>
+                            <div class = "answer" id ="third">
+                              <input type="radio" name="Answer3" value="right" onclick ="checkAnswer(this)"> Sonic The HedgeHog<br>
+                              <input type="radio" name="Answer3" value="wrong" onclick ="checkAnswer(this)"> Crash Bandicoot<br>
+                              <input type="radio" name="Answer3" value="wrong" onclick ="checkAnswer(this)"> Megaman<br>
+                              <h4></h4>
+                            </div> 
+                             
+                              <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                    </div>
+                     <!--FOURTH QUESTION-->
+                    <div id = "fourthQuestion" style = "display : none">
+                            <h2>In what Series were Dracula and The Grim Reaper recurring Villians?</h2>
+                            <div class = "answer" id ="fourth">
+                              <input type="radio" name="Answer4" value="wrong" onclick ="checkAnswer(this)">
+                              Soul Reaver<br>
+                              <input type="radio" name="Answer4" value="right" onclick ="checkAnswer(this)">
+                               Castelvania<br>
+                              <input type="radio" name="Answer4" value="wrong" onclick ="checkAnswer(this)">
+                               Halo<br>
+                               <h4></h4>
+                            </div>
+                              <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                    </div>
+                     <!--FIFTH QUESTION-->
+                    <div id = "fifthQuestion" style = "display : none">
+                            <h2>Green hat, elf ears and blonde hair. Who is?</h2>
+                            <div class = "answer" id ="fifth">
+                              <input type="radio" name="Answer5" value="right" onclick ="checkAnswer(this)">Princess Zelda<br>
+                              <input type="radio" name="Answer5" value="wrong" onclick ="checkAnswer(this)"> Link<br>
+                              <input type="radio" name="Answer5" value="wrong" onclick ="checkAnswer(this)"> Kirby<br>
+                              <h4></h4>
+                            </div>  
+                              <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                    </div>
+                     <!--SCORE RESULT-->
+                     <div id = "scoreResult" style = "display : none">
+                            <h2>Your score is: </h2>
+                              <h3 id ="scoreNumber"></h3>
+                              <h4 id ="resultText"></h4>
+                              <input type="button" value="RETRY" id ="submitButton" onclick="reloadPage()">
+                    </div>
+                     
+            </div>
+            <!--NORMAL MODE-->
+            <div id ="NormalMode" style = "display : none">
+                  <!--FIRST QUESTION-->
+                  <div id = "firstQuestion"  style = "display :">
+                        <h2> what's the name of the princess in Tales Of Vesperia?:</h2>
+                                 <div class = "answer" id ="first">
+                          <input type="radio" name="Answer" value="right" onclick ="checkAnswer(this)"> Estelle<br>
+                          <input type="radio" name="Answer" value="wrong" onclick ="checkAnswer(this)"> Sakura<br>
+                          <input type="radio" name="Answer" value="wrong" onclick ="checkAnswer(this)"> Marta<br>  
+                                   <h4></h4>
+                                 </div>
+                                 <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                        </div>
+                    <!--SECOND QUESTION-->
+                        <div id = "secondQuestion" style = "display : none">
+                                <h2>What says the first Act of LOVELESS? :</h2>
+                                <div class = "answer" id ="second">
+                                  <input type="radio" name="Answer2" value="wrong" onclick ="checkAnswer(this)"> Twinkle Twinkle little star ...<br>
+                                  <input type="radio" name="Answer2" value="right" onclick ="checkAnswer(this)"> Infinite in mystery is the gift of the Goddess ...<br>
+                                  <input type="radio" name="Answer2" value="wrong" onclick ="checkAnswer(this)"> My friend, the fates are cruel ...<br>
+                                  <h4></h4>
+                                </div>  
+                                  <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                        </div>
+                         <!--THIRD QUESTION-->
+                        <div id = "thirdQuestion" style = "display : none" >
+                                <h2>Who's the last boss in Metal Gear Solid 3</h2>
+                                <div class = "answer" id ="third">
+                                  <input type="radio" name="Answer3" value="right" onclick ="checkAnswer(this)"> The Boss<br>
+                                  <input type="radio" name="Answer3" value="wrong" onclick ="checkAnswer(this)"> Liquid Snake<br>
+                                  <input type="radio" name="Answer3" value="wrong" onclick ="checkAnswer(this)"> Ocelot<br>
+                                  <h4></h4>
+                                </div> 
+                                 
+                                  <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                        </div>
+                         <!--FOURTH QUESTION-->
+                        <div id = "fourthQuestion" style = "display : none">
+                                <h2>In which game has recited Willemm Daofe?</h2>
+                                <div class = "answer" id ="fourth">
+                                  <input type="radio" name="Answer4" value="wrong" onclick ="checkAnswer(this)">
+                                  Dead Space 2<br>
+                                  <input type="radio" name="Answer4" value="right" onclick ="checkAnswer(this)">
+                                   Beyond: Two Souls<br>
+                                  <input type="radio" name="Answer4" value="wrong" onclick ="checkAnswer(this)">
+                                   Heavy Rain<br>
+                                   <h4></h4>
+                                </div>
+                                  <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                        </div>
+                         <!--FIFTH QUESTION-->
+                        <div id = "fifthQuestion" style = "display : none">
+                                <h2>Which of these is the smallest Pokemon?</h2>
+                                <div class = "answer" id ="fifth">
+                                  <input type="radio" name="Answer5" value="right" onclick ="checkAnswer(this)">Joltik<br>
+                                  <input type="radio" name="Answer5" value="wrong" onclick ="checkAnswer(this)"> Diglet<br>
+                                  <input type="radio" name="Answer5" value="wrong" onclick ="checkAnswer(this)"> Caterpie<br>
+                                  <h4></h4>
+                                </div>  
+                                  <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                        </div>
+                         <!--SCORE RESULT-->
+                         <div id = "scoreResult" style = "display : none">
+                                <h2>Your score is: </h2>
+                                  <h3 id ="scoreNumber"></h3>
+                                  <h4 id ="resultText"></h4>
+                                  <input type="button" value="RETRY" id ="submitButton" onclick="reloadPage()">
+                        </div>
+               
+            </div>
+            <!--HARD MODE-->
+            <div id ="HardMode" style = "display : none">
+                 <!--FIRST QUESTION-->
+                 <div id = "firstQuestion"  style = "display :">
+                        <h2> what's the name of the princess in Tales Of Vesperia?:</h2>
+                                 <div class = "answer" id ="first">
+                          <input type="radio" name="Answer" value="right" onclick ="checkAnswer(this)"> Estelle<br>
+                          <input type="radio" name="Answer" value="wrong" onclick ="checkAnswer(this)"> Sakura<br>
+                          <input type="radio" name="Answer" value="wrong" onclick ="checkAnswer(this)"> Marta<br>  
+                                   <h4></h4>
+                                 </div>
+                                 <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                        </div>
+                    <!--SECOND QUESTION-->
+                        <div id = "secondQuestion" style = "display : none">
+                                <h2>What says the first Act of LOVELESS? :</h2>
+                                <div class = "answer" id ="second">
+                                  <input type="radio" name="Answer2" value="wrong" onclick ="checkAnswer(this)"> Twinkle Twinkle little star ...<br>
+                                  <input type="radio" name="Answer2" value="right" onclick ="checkAnswer(this)"> Infinite in mystery is the gift of the Goddess ...<br>
+                                  <input type="radio" name="Answer2" value="wrong" onclick ="checkAnswer(this)"> My friend, the fates are cruel ...<br>
+                                  <h4></h4>
+                                </div>  
+                                  <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                        </div>
+                         <!--THIRD QUESTION-->
+                        <div id = "thirdQuestion" style = "display : none" >
+                                <h2>Who's the last boss in Metal Gear Solid 3</h2>
+                                <div class = "answer" id ="third">
+                                  <input type="radio" name="Answer3" value="right" onclick ="checkAnswer(this)"> The Boss<br>
+                                  <input type="radio" name="Answer3" value="wrong" onclick ="checkAnswer(this)"> Liquid Snake<br>
+                                  <input type="radio" name="Answer3" value="wrong" onclick ="checkAnswer(this)"> Ocelot<br>
+                                  <h4></h4>
+                                </div> 
+                                 
+                                  <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                        </div>
+                         <!--FOURTH QUESTION-->
+                        <div id = "fourthQuestion" style = "display : none">
+                                <h2>In which game has recited Willemm Daofe?</h2>
+                                <div class = "answer" id ="fourth">
+                                  <input type="radio" name="Answer4" value="wrong" onclick ="checkAnswer(this)">
+                                  Dead Space 2<br>
+                                  <input type="radio" name="Answer4" value="right" onclick ="checkAnswer(this)">
+                                   Beyond: Two Souls<br>
+                                  <input type="radio" name="Answer4" value="wrong" onclick ="checkAnswer(this)">
+                                   Heavy Rain<br>
+                                   <h4></h4>
+                                </div>
+                                  <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                        </div>
+                         <!--FIFTH QUESTION-->
+                        <div id = "fifthQuestion" style = "display : none">
+                                <h2>Which of these is the smallest Pokemon?</h2>
+                                <div class = "answer" id ="fifth">
+                                  <input type="radio" name="Answer5" value="right" onclick ="checkAnswer(this)">Joltik<br>
+                                  <input type="radio" name="Answer5" value="wrong" onclick ="checkAnswer(this)"> Diglet<br>
+                                  <input type="radio" name="Answer5" value="wrong" onclick ="checkAnswer(this)"> Caterpie<br>
+                                  <h4></h4>
+                                </div>  
+                                  <input type="button" value="NEXT" id ="submitButton" onclick="changeQuestion(this)">
+                        </div>
+                         <!--SCORE RESULT-->
+                         <div id = "scoreResult" style = "display : none">
+                                <h2>Your score is: </h2>
+                                  <h3 id ="scoreNumber"></h3>
+                                  <h4 id ="resultText"></h4>
+                                  <input type="button" value="RETRY" id ="submitButton" onclick="reloadPage()">
+                        </div>
+            </div>
+</div>
+<script>
+
+var score = 0;  
+//FUNCTION TRIGGER ZOOM IN/OUT
+
+function reloadPage(){
+
+    location.reload(); 
+}
+
+window.onload = function (){
+    var lis = document.getElementsByClassName("logoDifficulty");
+    for (var i = 0; i < lis.length; i ++){
+           lis[i].addEventListener("mouseenter", zoomIn);
+           lis[i].addEventListener("mouseleave", zoomOut);
+    }
+}
+
+//FUNCTION FOR ZOOM IN
+     function zoomIn(){
+         var imgs = event.target;
+         console.log("zoomin");
+         imgs = event.target.style.width = "400px";
+     }
+
+//FUNCTION FOR ZOOM OUT
+     function zoomOut(){
+         var imgs = event.target;
+         console.log("zoomout");
+         imgs = event.target.style.width = "250px";
+     }
+
+//FUNCTION FOR VOLUME CONTROL
+    function turnVolume(button){
+ 
+                 //CHECK IF BUTTONN IS OFF, SO STOP MUSIC
+                if(button.value == "Off"){
+
+                    button.value = "On"
+                    audio.pause();
+
+                    //ELSE IF BUTTON IS ON, TURN ON THE MUSIC
+                }  else if (button.value == "On"){
+                    button.value = "Off";
+                    audio.play();
+                }
+    }
+
+//FUNCTION ONMOUSENETER AUDIO SELECT
+function onMouseAudio(){
+    var audioChoice = new Audio('choice.mp3');
+       audioChoice.play();
+
+}
+    //FUNCTION MODES
+   function choiceMode(mod) {
+       var audiosel = document.getElementById("audio");
+       var audioSelect = new Audio('select.mp3');
+       audioSelect.play();
+
+        var x = mod.getAttribute('value');
+switch(x){
+    case "Easy" : console.log("Easy Mod");
+    console.log(x);
+     document.getElementById("Quiz").removeAttribute("style");
+     document.getElementById("EasyMode").style.display = "";
+     document.getElementById("Difficulty").style.display ="none";
+     document.getElementById("title").style.display = "none";
+    break;
+
+    case "Normal" : console.log("Normal Mod");
+    console.log(x);
+    document.getElementById("Quiz").removeAttribute("style");
+    document.getElementById("NormalMode").style.display = "";
+    document.getElementById("Difficulty").style.display ="none";
+    document.getElementById("title").style.display = "none";
+    
+    break;
+
+    case "Hard" : console.log("Hard Mod");
+    console.log(x);
+    document.getElementById("Quiz").removeAttribute("style");
+    document.getElementById("HardMode").style.display = "";
+    document.getElementById("Difficulty").style.display ="none";
+    document.getElementById("title").style.display = "none";
+    break;
+
+    default: console.log ("Not selected");
+    console.log(x);
+}
+    }
+
+
+    //FUNCION CHECK ANSWER
+    function checkAnswer(choice){
+        var x = choice.getAttribute('value');
+        var y = choice.getAttribute('type');
+        var next = choice.parentElement;
+
+        var c = next.childNodes;
+         
+        if(x == "wrong"){
+            console.log("wrong answer");
+            console.log(choice.value);
+            console.log(next);
+
+           
+            switch(next.id){
+                case "fifth" : console.log("correct5");
+     
+                c[13].innerText = "WRONG ANSWER";
+                  c[13].style.color = "red";
+                                         
+                                            break;
+                  case "fourth" : console.log("correct4");
+
+                  c[13].innerText = "WRONG ANSWER";
+                  c[13].style.color = "red"; 
+                                            break;
+                  case "third" : console.log("correct3");
+ 
+                  c[13].innerText = "WRONG ANSWER";
+                  c[13].style.color = "red";
+                                            break;                         
+
+                  case "second" : console.log("correct2");
+
+                  c[13].innerText = "WRONG ANSWER";
+                  c[13].style.color = "red";
+                                            break;  
+                  case "first" : console.log("correct1");
+                  c[13].innerText = "WRONG ANSWER";
+                  c[13].style.color = "red";
+
+                                            break;  
+            }
+        }
+
+        if(x == "right"){
+    console.log("right answer");
+    console.log(choice.value);
+            console.log(next);
+
+            switch(next.id){
+                case "fifth" : console.log("correct5");
+                  c[13].innerText = "RIGHT ANSWER";
+                  c[13].style.color = "green";      
+                    console.log("this is the X " + x);
+                    console.log("SCORE IS" + score);
+                    score = score + 1;
+                                         
+                                            break;
+                  case "fourth" : console.log("correct4");
+                  c[13].innerText = "RIGHT ANSWER";
+                  c[13].style.color = "green";
+
+                    console.log("this is the X " + x);
+                    console.log("SCORE IS" + score);
+                    score = score + 1;
+
+                
+                                            break;
+                  case "third" : console.log("correct3");
+                  c[13].innerText = "RIGHT ANSWER";
+                  c[13].style.color = "green";
+
+                   console.log("this is the X " + x);
+                   console.log("SCORE IS" + score);
+                   score = score + 1;
+
+                                            break;                         
+
+                  case "second" : console.log("correct2");
+                  c[13].innerText = "RIGHT ANSWER";
+                  c[13].style.color = "green";
+                    
+                    console.log("this is the X " + x);
+                    console.log("SCORE IS" + score);
+                    score = score + 1;
+
+    
+                                            break;  
+                  case "first" : console.log("correct1");
+                  c[13].innerText = "RIGHT ANSWER";
+                  c[13].style.color = "green";
+
+                    console.log("this is the X " + x);
+                    console.log("SCORE IS" + score);
+                                         score = score + 1;
+
+                                            break;  
+            }
+}
+                  next.id = "null";
+    }
+
+    function changeQuestion(buttonPressed){
+         var parent = buttonPressed.parentElement;
+         console.log(parent);
+
+         switch(parent.id){
+             case "firstQuestion" : console.log("this is the first Qeestion") ;
+             document.getElementById("secondQuestion").style.display ="";
+             document.getElementById("firstQuestion").style.display ="none";
+             break;
+
+             case "secondQuestion" : console.log("this is the second Question");
+             document.getElementById("thirdQuestion").style.display ="";
+             document.getElementById("secondQuestion").style.display ="none";
+             break;
+
+             case "thirdQuestion" : console.log("this is the third Question");
+             document.getElementById("fourthQuestion").style.display ="";
+             document.getElementById("thirdQuestion").style.display ="none";
+             break;
+
+             case "fourthQuestion" : console.log("this is the fourth Question");
+             document.getElementById("fifthQuestion").style.display ="";
+             document.getElementById("fourthQuestion").style.display ="none";
+             break;
+
+             case "fifthQuestion" : console.log("this is the fifth Question");
+             document.getElementById("scoreResult").style.display ="";
+             document.getElementById("fifthQuestion").style.display ="none";
+             displayScore();
+             break;
+         }
+
+         function displayScore(){
+       document.getElementById("scoreNumber").innerText = score;
+       if (score <= 3){
+           document.getElementById("resultText").innerText = "I think u have to retry!";
+       }else if (score > 3){
+           document.getElementById("resultText").innerText = "YOU ARE AWESOME!"
+       }
+
+         }
+    }
+
+</script>
+    </body>
+
+</html>
